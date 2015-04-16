@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 public class userActivity extends Activity {
 
-    @Override
+
+
+     public int activityCounter=0;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
@@ -34,13 +37,21 @@ public class userActivity extends Activity {
         // tell the ListView what data to use
         theListView.setAdapter(theAdapter);
 
+
+
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String activityOptionsUser = "You selected " + String.valueOf(adapterView.getItemAtPosition(position));
                 Toast.makeText(userActivity.this, activityOptionsUser, Toast.LENGTH_SHORT).show();
 
+                if(String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("standing next to a bed")){
+                    activityCounter++;
+                    System.out.println(activityCounter);
+                    // dataHandler.updateActivityAtmeasurement()
 
+                    
+                }
             }
         });
     }
