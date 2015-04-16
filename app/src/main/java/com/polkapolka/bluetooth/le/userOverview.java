@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
@@ -33,13 +34,13 @@ public class userOverview extends Activity {
         int activityCounterOther = userActivity.activityCounterOther;
 
         BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[]{
-                new DataPoint(0, 0),
                 new DataPoint(1, activityCounterBed),
                 new DataPoint(2, activityCounterDesk),
                 new DataPoint(3, activityCounterWalking),
                 new DataPoint(4, activityCounterPatient),
                 new DataPoint(5, activityCounterMachine),
-                new DataPoint(6, activityCounterOther)
+                new DataPoint(6, activityCounterOther),
+                new DataPoint(7,0)
 
         });
         series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
@@ -48,6 +49,9 @@ public class userOverview extends Activity {
                 return Color.rgb((int) data.getX() * 255 / 4, (int) Math.abs(data.getY() * 255 / 6), 100);
             }
         });
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {"Bed", "Desk", "walking", "Patient", "Machine", "Other", ""});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
         series.setSpacing(25);
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.BLACK);
