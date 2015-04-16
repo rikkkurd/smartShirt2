@@ -1,9 +1,19 @@
 package com.polkapolka.bluetooth.le;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.Series;
 
 
 public class userOverview extends Activity {
@@ -12,6 +22,38 @@ public class userOverview extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_overview);
+
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        int activityCounterBed = userActivity.activityCounterBed;
+        int activityCounterDesk = userActivity.activityCounterDesk;
+        int activityCounterWalking = userActivity.activityCounterWalking;
+        int activityCounterPatient = userActivity.activityCounterPatient;
+        int activityCounterMachine = userActivity.activityCounterMachine;
+        int activityCounterOther = userActivity.activityCounterOther;
+
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(0, 0),
+                new DataPoint(1, activityCounterBed),
+                new DataPoint(2, activityCounterDesk),
+                new DataPoint(3, activityCounterWalking),
+                new DataPoint(4, activityCounterPatient),
+                new DataPoint(5, activityCounterMachine),
+                new DataPoint(6, activityCounterOther)
+
+        });
+        series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint data) {
+                return Color.rgb((int) data.getX() * 255 / 4, (int) Math.abs(data.getY() * 255 / 6), 100);
+            }
+        });
+        series.setSpacing(25);
+        series.setDrawValuesOnTop(true);
+        series.setValuesOnTopColor(Color.BLACK);
+graph.addSeries(series);
+
+
     }
 
 

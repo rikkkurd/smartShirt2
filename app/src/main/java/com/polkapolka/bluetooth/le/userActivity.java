@@ -17,12 +17,14 @@ public class userActivity extends Activity {
 
 
 
-     public int activityCounterBed=0;
-     public int activityCounterDesk=0;
-     public int activityCounterWalking=0;
-     public int activityCounterPatient=0;
-     public int activityCounterMachine=0;
-     public int activityCounterOther=0;
+     public static int activityCounterBed = 0;
+     public static int activityCounterDesk = 0;
+     public static int activityCounterWalking=0;
+     public static int activityCounterPatient=0;
+     public static int activityCounterMachine=0;
+     public static int activityCounterOther=0;
+
+
 
 
     protected void onCreate(Bundle savedInstanceState) {

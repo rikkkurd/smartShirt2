@@ -16,4 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    dependencies{
+        compile 'com.jjoe64:graphview:4.0.0'
+    }
 }
