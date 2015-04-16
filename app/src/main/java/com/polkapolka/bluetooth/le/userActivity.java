@@ -17,14 +17,20 @@ public class userActivity extends Activity {
 
 
 
-     public int activityCounter=0;
+     public int activityCounterBed=0;
+     public int activityCounterDesk=0;
+     public int activityCounterWalking=0;
+     public int activityCounterPatient=0;
+     public int activityCounterMachine=0;
+     public int activityCounterOther=0;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        String[] activityOptionsUser = {"standing next to a bed", "working at a desk",
-                "walking", "handling a patient", "operating machine", "other"};
+        String[] activityOptionsUser = {"Standing next to a bed", "Working at a desk",
+                "Walking", "Handling a patient", "Operating machine", "Other"};
 
 // The ListAdapter acts as a bridge between the data and each ListItem
         // You fill the ListView with a ListAdapter. You pass it a context represented by
@@ -45,12 +51,36 @@ public class userActivity extends Activity {
                 String activityOptionsUser = "You selected " + String.valueOf(adapterView.getItemAtPosition(position));
                 Toast.makeText(userActivity.this, activityOptionsUser, Toast.LENGTH_SHORT).show();
 
-                if(String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("standing next to a bed")){
-                    activityCounter++;
-                    System.out.println(activityCounter);
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Standing next to a bed")) {
+                    activityCounterBed++;
+                    System.out.print("Bed");
+                    System.out.println(activityCounterBed);
                     // dataHandler.updateActivityAtmeasurement()
-
-                    
+                }
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Working at a desk")) {
+                    activityCounterDesk++;
+                    System.out.print("Desk");
+                    System.out.println(activityCounterDesk);
+                }
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Walking")) {
+                    activityCounterWalking++;
+                    System.out.print("Walking");
+                    System.out.println(activityCounterWalking);
+                }
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Handling a patient")) {
+                    activityCounterPatient++;
+                    System.out.print("Patient");
+                    System.out.println(activityCounterPatient);
+                }
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Operating machine")) {
+                    activityCounterMachine++;
+                    System.out.print("machine");
+                    System.out.println(activityCounterMachine);
+                }
+                if (String.valueOf(adapterView.getItemAtPosition(position)).equalsIgnoreCase("Other")) {
+                    activityCounterOther++;
+                    System.out.print("Other");
+                    System.out.println(activityCounterOther);
                 }
             }
         });

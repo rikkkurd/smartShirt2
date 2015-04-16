@@ -51,4 +51,11 @@
     <string name="button_initialize_app">initialize app</string>
     <string name="title_activity_user">userActivity</string>
     <string name="title_activity_user_overview">userOverview</string>
+
+    <string name="activity_bed">Standing next to a bed</string>
+    <string name="activity_desk">Working at a desk</string>
+    <string name="activity_walking">Walking</string>
+    <string name="activity_patient">Handling a patient</string>
+    <string name="activity_machine">Operating machine</string>
+    <string name="activity_other">Other</string>
 </resources>
